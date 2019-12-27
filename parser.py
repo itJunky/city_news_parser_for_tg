@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Crated by ITJunky
+
+# Подгружаем поддержку для обращения к сайтам
+import requests
+
+# Подгружаем библиотеку для парсинга текста
+from bs4 import BeautifulSoup
+
+# Подгружаем настройки
+from config import dork, timeshift
+# Основная ссылка для парсинга
+durl = 'https://www.google.com/search?q={}&tbs=qdr:{}&tbo=1&tbm=nws'.format(dork, timeshift)
+# Основная функция, реализующая парсинг страниц
+def parse_page(url='xx'):
+  if url is 'xx':
+    url = durl
+  result = []
+  # Открываем страницу
+  page = requests.get(url).content
+  # Перевариваем страницу в удобный для разбора формат xml
+  soup = BeautifulSoup(page, 'lxml')
+
+  for match in soup.findAll('span'):
+    match.replace_with('')
+    #match.unwrap()
+
+  #all_news = soup.findAll('div', {'class': 'BNeawe'})
+  all_news = soup.findAll('div', {'class': 'kCrYT'})
+  #all_news = soup.findAll('div', {'class': 'ZINbbc'})
+  #all_news = soup.findAll('div')
+  previous_url = ''
+  for news in all_news:
+    #print(news)
+    #print('1---------------------')
+    #print(news.text)
+    try:
+      print(news.find('a')['href'])
+      news_url = news.find('a')['href'].split('q=')[1].split('&sa=U')[0]
+      print(news_url)
+    except Exception as e:
+      print(e)
+      print('----\r\n' + str(news.find('a')))
+      news_url = None
+
+    print('\r\n\r\n')
+
+    try:
+      item = "🌍 {} \n <a href='{}'>Подробнее</a>".format(news.text, news_url)
+    except Exception as e:
+      print(e)
+      item = None
+    if previous_url == news_url or news_url is None:
+      pass
+    else:
+      result.append(item)
+      previous_url = news_url
+
+  return result
+
+# Основной код скрипта, запускающий все ранее объявленные функции
+if __name__ == "__main__":
+  print('Trying to parse url')
+  print(parse_page())
+
