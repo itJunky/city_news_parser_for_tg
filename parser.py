@@ -9,9 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Подгружаем настройки
-from config import dork, timeshift
-# Основная ссылка для парсинга
-durl = 'https://www.google.com/search?q={}&tbs=qdr:{}&tbo=1&tbm=nws'.format(dork, timeshift)
+from config import durl
 # Основная функция, реализующая парсинг страниц
 def parse_page(url='xx'):
   if url is 'xx':
