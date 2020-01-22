@@ -13,3 +13,8 @@ dork = 'moscow'
 timeshift = 's90'
 durl = 'https://www.google.com/search?q={}&tbs=qdr:{}&tbo=1&tbm=nws'.format(dork, timeshift)
 ```
+In crontab set something like this:
+
+```
+* * * * * /path/to/python3 /path/to/cronjob.py
+```
