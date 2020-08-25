@@ -9,7 +9,7 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start', 'help'])
 def handle_start_help(msg):
-  start_text = 'Hello :)'
+  start_text = 'Hello :) {}' % msg.chat.id
   bot.send_message(msg.chat.id, start_text)
 
 @bot.message_handler(commands=['news'])

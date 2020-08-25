@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Crated by ITJunky
 
@@ -22,17 +22,10 @@ def parse_page(url='xx'):
 
   for match in soup.findAll('span'):
     match.replace_with('')
-    #match.unwrap()
 
-  #all_news = soup.findAll('div', {'class': 'BNeawe'})
   all_news = soup.findAll('div', {'class': 'kCrYT'})
-  #all_news = soup.findAll('div', {'class': 'ZINbbc'})
-  #all_news = soup.findAll('div')
   previous_url = ''
   for news in all_news:
-    #print(news)
-    #print('1---------------------')
-    #print(news.text)
     try:
       print(news.find('a')['href'])
       news_url = news.find('a')['href'].split('q=')[1].split('&sa=U')[0]
