@@ -9,7 +9,7 @@ Before start the bot you need create a config.py file with content like this:
 ```
 token = 'xxxxxxxxxxxxxxxxxxxxxxx'
 chat_ids = [-12345678]
-dork = 'moscow'
+dork = 'London'
 timeshift = 's90'
 durl = 'https://www.google.com/search?q={}&tbs=qdr:{}&tbo=1&tbm=nws'.format(dork, timeshift)
 ```
