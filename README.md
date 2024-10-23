@@ -1,7 +1,7 @@
 # city_news_parser_for_tg
-Just for fun project to forwarding any news from google about your city
+Just for fun project for continous forwarding all news from google about your city, every time when it's created on every sites.
 
-Parse any news by string at last hour in google every minute.
+Parse all news by string at last hour in google every minute.
 
 ## Installation
 Before start the bot you need create a config.py file with content like this:
